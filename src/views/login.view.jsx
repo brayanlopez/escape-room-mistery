@@ -73,6 +73,7 @@ const LoginView = ({
         onClick={onClickSubmitButton}
         // onClick={onClickEnter}
         size="large"
+        color="warning"
       >
         {enterMessages[counter]}
       </Button>

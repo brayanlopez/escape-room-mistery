@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
 
 import "./App.css";
 
@@ -8,6 +9,21 @@ import LoginView from "./views/login.view";
 const PASSWORD = "4213";
 const PRINCIPAL_TEXT = "Nigeria";
 const isNumericRegex = new RegExp(/^\d+$/);
+
+const theme = createTheme({
+  // components: {
+  //   // Name of the component
+  //   MuiButtonBase: {
+  //     defaultProps: {
+  //       // The props to change the default for.
+  //       disableRipple: true, // No more ripple, on the whole application 💣!
+  //     },
+  //   },
+  // },
+  palette: {
+    mode: "dark",
+  },
+});
 
 function App() {
   const [passwordState, setPassworState] = useState("");
@@ -38,7 +54,9 @@ function App() {
   };
 
   return (
-    <>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+
       {showLogin ? (
         <HomeView principalText={PRINCIPAL_TEXT} />
       ) : (
@@ -51,7 +69,7 @@ function App() {
           onChangePassword={onChangePassword}
         />
       )}
-    </>
+    </ThemeProvider>
   );
 }
 
